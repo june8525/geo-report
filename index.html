@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>品牌 GEO 引用策略報告 · Enter IMC</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Barlow+Condensed:wght@300;400;600;700;800;900&family=IBM+Plex+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:   #0B1427;
+  --navy2:  #111D36;
+  --navy3:  #1A2C52;
+  --blue:   #0057FF;
+  --blue-l: #2F7BFF;
+  --blue-xl:#6BA4FF;
+  --amber:  #F59E0B;
+  --amber-l:#FCD34D;
+  --ok:     #10B981;
+  --ok-l:   #34D399;
+  --fail:   #EF4444;
+  --white:  #FFFFFF;
+  --off:    #F4F7FF;
+  --border: #D6E0FF;
+  --border-d:rgba(0,87,255,0.18);
+  --text:   #0B1427;
+  --text-s: #3A4A6B;
+  --text-m: #7A8FB5;
+  --text-f: #B0BFDB;
+  --shadow: 0 4px 24px rgba(0,57,180,0.10);
+  --shadow-lg: 0 12px 48px rgba(0,57,180,0.16);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Noto Sans TC', sans-serif;
+  background: var(--navy);
+  color: var(--white);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── TOPBAR ── */
+.topbar {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(11,20,39,0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-d);
+  padding: 0 48px;
+  height: 52px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.topbar-brand { display: flex; align-items: center; gap: 10px; }
+.topbar-sq { width: 26px; height: 26px; background: var(--blue); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.topbar-sq svg { width: 12px; height: 12px; fill: #fff; }
+.topbar-name { font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 2.5px; color: rgba(255,255,255,0.55); text-transform: uppercase; }
+.topbar-tag { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 1.5px; color: var(--blue-xl); background: rgba(0,87,255,0.12); border: 1px solid rgba(0,87,255,0.25); padding: 3px 8px; }
+
+/* ── HERO ── */
+.hero {
+  padding: 80px 48px 64px;
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 60% 0%, rgba(0,87,255,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-grid-bg {
+  position: absolute; inset: 0; pointer-events: none; overflow: hidden;
+}
+.hero-grid-bg::after {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(0,87,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,87,255,0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+.hero-inner { position: relative; z-index: 1; max-width: 700px; }
+.hero-eyebrow {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px; letter-spacing: 3px; color: var(--blue-xl);
+  text-transform: uppercase; margin-bottom: 18px;
+  display: flex; align-items: center; gap: 10px;
+}
+.hero-eyebrow::before { content: ''; display: block; width: 24px; height: 1px; background: var(--blue); }
+.hero-h1 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(40px, 5vw, 60px);
+  font-weight: 900; line-height: 1.05;
+  color: var(--white); margin-bottom: 10px;
+  letter-spacing: -0.5px;
+}
+.hero-h1 em { color: var(--blue-l); font-style: normal; }
+.hero-h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(22px, 3vw, 32px);
+  font-weight: 400; color: rgba(255,255,255,0.35);
+  margin-bottom: 28px;
+}
+.hero-desc { font-size: 14px; color: rgba(255,255,255,0.45); line-height: 1.8; max-width: 560px; margin-bottom: 32px; }
+
+/* ── INPUT FORM ── */
+.input-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border-d);
+  padding: 36px 40px;
+  position: relative; overflow: hidden;
+  margin: 0 48px 64px;
+}
+.input-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--blue), var(--amber), var(--ok));
+}
+.input-card-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 20px; font-weight: 700; color: var(--white);
+  margin-bottom: 4px; letter-spacing: 0.5px;
+}
+.input-card-sub { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 1.5px; color: var(--text-m); text-transform: uppercase; margin-bottom: 28px; }
+.input-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+.input-group { display: flex; flex-direction: column; gap: 7px; }
+.input-group.full { grid-column: 1 / -1; }
+.input-label { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 1.5px; color: var(--text-m); text-transform: uppercase; }
+.input-field {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(0,87,255,0.2);
+  color: var(--white);
+  font-family: 'Noto Sans TC', sans-serif;
+  font-size: 13px;
+  padding: 11px 14px;
+  outline: none;
+  transition: border-color .15s, background .15s;
+}
+.input-field::placeholder { color: rgba(255,255,255,0.2); }
+.input-field:focus { border-color: var(--blue); background: rgba(0,87,255,0.06); }
+.input-field.mono { font-family: 'IBM Plex Mono', monospace; font-size: 12px; }
+select.input-field { cursor: pointer; }
+select.input-field option { background: var(--navy2); color: var(--white); }
+.input-hint { font-size: 11px; color: var(--text-m); line-height: 1.5; }
+.generate-row { display: flex; align-items: center; gap: 16px; margin-top: 8px; }
+.gen-btn {
+  background: var(--blue); border: none; cursor: pointer;
+  padding: 16px 32px; color: #fff;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 15px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+  display: flex; align-items: center; gap: 10px;
+  transition: background .15s, transform .1s;
+  position: relative; overflow: hidden;
+}
+.gen-btn::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.08) 50%, transparent 100%);
+  transform: translateX(-100%); transition: transform .4s;
+}
+.gen-btn:hover::after { transform: translateX(100%); }
+.gen-btn:hover { background: var(--blue-l); transform: translateY(-2px); }
+.gen-btn:disabled { background: rgba(0,87,255,0.3); cursor: not-allowed; transform: none; }
+.gen-btn svg { width: 18px; height: 18px; fill: #fff; flex-shrink: 0; }
+.gen-spinner { width: 18px; height: 18px; border: 2px solid rgba(255,255,255,0.25); border-top-color: #fff; border-radius: 50%; animation: spin .7s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.gen-status { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--text-m); letter-spacing: 1px; }
+
+/* ── PROGRESS ── */
+.progress-bar-wrap { margin-top: 16px; display: none; }
+.progress-track { height: 2px; background: rgba(255,255,255,0.08); overflow: hidden; }
+.progress-fill { height: 100%; background: linear-gradient(90deg, var(--blue), var(--ok)); transition: width .4s; width: 0%; }
+.progress-label { font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: rgba(255,255,255,0.3); margin-top: 6px; letter-spacing: .5px; }
+
+/* ── REPORT WRAPPER ── */
+#reportWrap { margin: 0 0 0 0; }
+
+/* ── REPORT: PAGE COVER ── */
+.rp-cover {
+  background: var(--navy);
+  border-top: 1px solid var(--border-d);
+  padding: 0;
+  position: relative; overflow: hidden;
+}
+.rp-cover-accent {
+  position: absolute; right: -200px; top: -200px;
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, rgba(0,87,255,0.10) 0%, transparent 65%);
+  pointer-events: none;
+}
+.rp-cover-accent2 {
+  position: absolute; left: -100px; bottom: -100px;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(245,158,11,0.05) 0%, transparent 65%);
+  pointer-events: none;
+}
+.rp-cover-inner {
+  position: relative; z-index: 1;
+  padding: 56px 56px 48px;
+}
+.rp-cover-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 56px; }
+.rp-agency { display: flex; align-items: center; gap: 10px; }
+.rp-agency-sq { width: 30px; height: 30px; background: var(--blue); display: flex; align-items: center; justify-content: center; }
+.rp-agency-sq svg { width: 14px; height: 14px; fill: #fff; }
+.rp-agency-info {}
+.rp-agency-name { font-family: 'Barlow Condensed', sans-serif; font-size: 15px; font-weight: 700; letter-spacing: 2px; color: rgba(255,255,255,0.6); text-transform: uppercase; }
+.rp-agency-sub { font-family: 'IBM Plex Mono', monospace; font-size: 8px; color: rgba(255,255,255,0.2); letter-spacing: 1px; margin-top: 2px; }
+.rp-cover-date { font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: rgba(255,255,255,0.25); letter-spacing: 1px; }
+
+.rp-cover-eyebrow { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 3px; color: var(--blue-xl); text-transform: uppercase; margin-bottom: 18px; display: flex; align-items: center; gap: 10px; }
+.rp-cover-eyebrow::before { content: ''; display: block; width: 20px; height: 1px; background: var(--blue); }
+.rp-cover-h1 { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(38px, 4vw, 56px); font-weight: 900; line-height: 1.05; color: var(--white); margin-bottom: 6px; }
+.rp-cover-h1 em { color: var(--blue-l); font-style: normal; }
+.rp-cover-h2 { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(18px, 2.5vw, 26px); font-weight: 400; color: rgba(255,255,255,0.3); margin-bottom: 36px; }
+
+.rp-meta-grid { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid rgba(0,87,255,0.2); max-width: 640px; margin-bottom: 40px; }
+.rp-meta-cell { padding: 14px 20px; border-right: 1px solid rgba(0,87,255,0.12); border-bottom: 1px solid rgba(0,87,255,0.12); }
+.rp-meta-cell:nth-child(even) { border-right: none; }
+.rp-meta-cell:nth-last-child(-n+2) { border-bottom: none; }
+.rp-meta-label { font-family: 'IBM Plex Mono', monospace; font-size: 8px; letter-spacing: 1.5px; color: rgba(255,255,255,0.2); text-transform: uppercase; margin-bottom: 5px; }
+.rp-meta-val { font-size: 13px; color: rgba(255,255,255,0.85); font-weight: 500; }
+
+.rp-kpi-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: rgba(0,87,255,0.15); border: 1px solid rgba(0,87,255,0.15); }
+.rp-kpi-cell { background: rgba(11,20,39,0.98); padding: 22px 18px; text-align: center; }
+.rp-kpi-num { font-family: 'Barlow Condensed', sans-serif; font-size: 40px; font-weight: 900; color: var(--blue-l); line-height: 1; }
+.rp-kpi-unit { font-family: 'Barlow Condensed', sans-serif; font-size: 16px; color: rgba(255,255,255,0.35); margin-left: 2px; }
+.rp-kpi-label { font-family: 'IBM Plex Mono', monospace; font-size: 8px; letter-spacing: 1px; color: rgba(255,255,255,0.3); margin-top: 8px; text-transform: uppercase; }
+.rp-kpi-cell:nth-child(4) .rp-kpi-num { color: var(--ok); }
+
+/* ── REPORT: SECTION ── */
+.rp-section { padding: 48px 56px; border-top: 1px solid rgba(255,255,255,0.05); background: #fff; color: var(--text); }
+.rp-section:nth-child(odd) { background: var(--off); }
+.rp-section-hdr { display: flex; align-items: center; gap: 14px; margin-bottom: 32px; }
+.rp-section-num { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 2px; color: var(--blue); background: rgba(0,87,255,0.07); border: 1px solid rgba(0,87,255,0.18); padding: 4px 10px; }
+.rp-section-title { font-family: 'Barlow Condensed', sans-serif; font-size: 24px; font-weight: 700; color: var(--text); letter-spacing: .5px; }
+.rp-section-title em { color: var(--blue); font-style: normal; }
+
+/* insight block */
+.rp-insight { background: var(--navy); color: #fff; padding: 20px 24px; border-left: 3px solid var(--blue); margin-bottom: 32px; font-size: 13.5px; line-height: 1.8; color: rgba(255,255,255,0.7); }
+.rp-insight strong { color: #fff; }
+
+/* three-col target cards */
+.rp-target-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-bottom: 40px; }
+.rp-target-card { background: var(--navy); padding: 20px; border-top: 3px solid transparent; }
+.rp-target-card.aio { border-top-color: var(--blue); }
+.rp-target-card.aeo { border-top-color: var(--amber); }
+.rp-target-card.geo { border-top-color: var(--ok); }
+.rp-target-badge { font-family: 'IBM Plex Mono', monospace; font-size: 8px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
+.rp-target-card.aio .rp-target-badge { color: var(--blue-xl); }
+.rp-target-card.aeo .rp-target-badge { color: var(--amber-l); }
+.rp-target-card.geo .rp-target-badge { color: var(--ok-l); }
+.rp-target-text { font-size: 12.5px; color: rgba(255,255,255,0.65); line-height: 1.65; }
+
+/* kw layer */
+.rp-kw-layers { display: flex; flex-direction: column; gap: 20px; }
+.rp-kw-layer { border: 1px solid var(--border); overflow: hidden; }
+.rp-kw-layer-hdr { background: var(--navy); padding: 10px 16px; display: flex; align-items: center; gap: 10px; }
+.rp-layer-badge { font-family: 'IBM Plex Mono', monospace; font-size: 8px; padding: 3px 8px; letter-spacing: 1px; text-transform: uppercase; border: 1px solid transparent; }
+.rp-layer-badge.l1 { color: var(--blue-xl); border-color: rgba(0,87,255,0.3); background: rgba(0,87,255,0.1); }
+.rp-layer-badge.l2 { color: var(--amber-l); border-color: rgba(245,158,11,0.3); background: rgba(245,158,11,0.08); }
+.rp-layer-badge.l3 { color: var(--ok-l); border-color: rgba(16,185,129,0.3); background: rgba(16,185,129,0.08); }
+.rp-layer-badge.l4 { color: #c4b5fd; border-color: rgba(167,139,250,0.3); background: rgba(167,139,250,0.06); }
+.rp-layer-name { font-family: 'Barlow Condensed', sans-serif; font-size: 14px; font-weight: 700; color: rgba(255,255,255,0.85); }
+.rp-layer-desc { font-size: 11px; color: rgba(255,255,255,0.3); margin-left: auto; font-family: 'IBM Plex Mono', monospace; }
+
+/* tables */
+.rp-table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+.rp-table thead th { text-align: left; padding: 10px 14px; background: var(--navy2); color: rgba(255,255,255,0.5); font-family: 'IBM Plex Mono', monospace; font-size: 8.5px; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 400; border-bottom: 1px solid rgba(0,87,255,0.15); }
+.rp-table thead th:first-child { border-left: 3px solid var(--blue); }
+.rp-table tbody td { padding: 10px 14px; border-bottom: 1px solid #EEF3FF; color: var(--text-s); vertical-align: top; line-height: 1.55; }
+.rp-table tbody tr:last-child td { border-bottom: none; }
+.rp-table tbody tr:hover td { background: #EEF3FF; }
+.rp-table tbody tr td:first-child { border-left: 3px solid transparent; }
+.rp-table tbody tr:nth-child(odd) td:first-child { border-left-color: var(--border); }
+.tag-blue { display: inline-block; padding: 2px 7px; font-family: 'IBM Plex Mono', monospace; font-size: 9px; background: rgba(0,87,255,0.08); color: var(--blue); border: 1px solid rgba(0,87,255,0.2); }
+.tag-ok { display: inline-block; padding: 2px 7px; font-family: 'IBM Plex Mono', monospace; font-size: 9px; background: rgba(16,185,129,0.08); color: var(--ok); border: 1px solid rgba(16,185,129,0.2); }
+.tag-warn { display: inline-block; padding: 2px 7px; font-family: 'IBM Plex Mono', monospace; font-size: 9px; background: rgba(245,158,11,0.08); color: var(--amber); border: 1px solid rgba(245,158,11,0.2); }
+.tag-m1 { display: inline-block; padding: 3px 8px; font-family: 'IBM Plex Mono', monospace; font-size: 9px; background: rgba(0,87,255,0.1); color: var(--blue); border: 1px solid rgba(0,87,255,0.2); }
+.tag-m2 { display: inline-block; padding: 3px 8px; font-family: 'IBM Plex Mono', monospace; font-size: 9px; background: rgba(245,158,11,0.1); color: var(--amber); border: 1px solid rgba(245,158,11,0.25); }
+.tag-m3 { display: inline-block; padding: 3px 8px; font-family: 'IBM Plex Mono', monospace; font-size: 9px; background: rgba(16,185,129,0.1); color: var(--ok); border: 1px solid rgba(16,185,129,0.25); }
+
+/* PAA section */
+.rp-paa-groups { display: flex; flex-direction: column; gap: 32px; }
+.rp-paa-group-title { font-family: 'Barlow Condensed', sans-serif; font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+.rp-paa-group-title::before { content: ''; display: inline-block; width: 3px; height: 20px; background: var(--blue); flex-shrink: 0; }
+.rp-paa-source-badge { display: inline-flex; align-items: center; gap: 6px; font-family: 'IBM Plex Mono', monospace; font-size: 9px; padding: 4px 10px; margin-bottom: 20px; }
+.rp-paa-source-badge.real { background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.25); color: var(--ok); }
+.rp-paa-source-badge.gen  { background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.25); color: var(--amber); }
+.rp-write-rules { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 24px; }
+.rp-write-box { padding: 18px; border: 1px solid var(--border); }
+.rp-write-box.do  { border-left: 3px solid var(--ok); background: rgba(16,185,129,0.02); }
+.rp-write-box.dont{ border-left: 3px solid var(--fail); background: rgba(239,68,68,0.02); }
+.rp-write-title { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 12px; }
+.rp-write-box.do .rp-write-title { color: var(--ok); }
+.rp-write-box.dont .rp-write-title { color: var(--fail); }
+.rp-write-list { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+.rp-write-list li { font-size: 12px; color: var(--text-s); padding-left: 14px; position: relative; line-height: 1.55; }
+.rp-write-list li::before { content: ''; position: absolute; left: 0; top: 7px; width: 5px; height: 5px; border-radius: 50%; }
+.rp-write-box.do .rp-write-list li::before { background: var(--ok); }
+.rp-write-box.dont .rp-write-list li::before { background: var(--fail); }
+
+/* GEO content cards */
+.rp-content-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+.rp-content-card { background: #fff; padding: 16px 18px; }
+.rp-content-code { font-family: 'IBM Plex Mono', monospace; font-size: 8px; letter-spacing: 1px; color: var(--text-f); margin-bottom: 6px; }
+.rp-content-title { font-size: 13px; color: var(--text); font-weight: 500; line-height: 1.45; margin-bottom: 10px; }
+.rp-content-meta { display: flex; flex-wrap: wrap; gap: 5px; }
+.rp-content-kw { font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: var(--text-f); margin-top: 7px; }
+
+/* Blog + news */
+.rp-blog-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; }
+.rp-blog-item { background: var(--off); border: 1px solid var(--border); padding: 16px 20px; display: grid; grid-template-columns: 36px 1fr auto; align-items: center; gap: 18px; }
+.rp-blog-num { font-family: 'Barlow Condensed', sans-serif; font-size: 30px; font-weight: 800; color: var(--blue); line-height: 1; }
+.rp-blog-title { font-size: 13.5px; font-weight: 600; color: var(--text); margin-bottom: 3px; }
+.rp-blog-meta { font-size: 11.5px; color: var(--text-m); line-height: 1.5; }
+
+.rp-news-block { background: var(--navy); padding: 24px 28px; border: 1px solid rgba(0,87,255,0.2); margin-top: 24px; }
+.rp-news-title { font-family: 'Barlow Condensed', sans-serif; font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 16px; }
+.rp-news-kv { display: grid; grid-template-columns: 1fr 2fr; border: 1px solid rgba(0,87,255,0.15); }
+.rp-news-k { padding: 10px 14px; background: rgba(0,87,255,0.07); font-family: 'IBM Plex Mono', monospace; font-size: 8.5px; letter-spacing: 1px; color: rgba(255,255,255,0.35); border-bottom: 1px solid rgba(0,87,255,0.1); text-transform: uppercase; }
+.rp-news-v { padding: 10px 14px; color: rgba(255,255,255,0.75); font-size: 12px; border-bottom: 1px solid rgba(0,87,255,0.1); line-height: 1.5; }
+.rp-news-k:last-of-type,.rp-news-v:last-of-type { border-bottom: none; }
+
+/* SOP timeline */
+.rp-sop { display: flex; flex-direction: column; gap: 0; position: relative; }
+.rp-sop::before { content: ''; position: absolute; left: 21px; top: 28px; bottom: 28px; width: 2px; background: linear-gradient(180deg, var(--blue), var(--ok)); z-index: 0; }
+.rp-sop-step { display: flex; gap: 22px; align-items: flex-start; padding: 14px 0; position: relative; z-index: 1; }
+.rp-sop-dot { width: 42px; height: 42px; background: var(--navy); border: 2px solid var(--blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.rp-sop-n { font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600; color: var(--blue); }
+.rp-sop-body { flex: 1; background: var(--off); border: 1px solid var(--border); padding: 13px 18px; margin-top: 4px; }
+.rp-sop-phase { font-family: 'IBM Plex Mono', monospace; font-size: 8px; letter-spacing: 1.5px; color: var(--text-f); text-transform: uppercase; margin-bottom: 4px; }
+.rp-sop-title { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+.rp-sop-desc { font-size: 12px; color: var(--text-m); line-height: 1.6; }
+
+/* KPI table */
+.rp-kpi-wrap { border: 1px solid var(--border); overflow: hidden; }
+
+/* Assets */
+.rp-assets-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); }
+.rp-asset-cell { background: #fff; padding: 14px 18px; display: flex; gap: 12px; align-items: flex-start; }
+.rp-asset-icon { width: 32px; height: 32px; background: var(--navy); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.rp-asset-icon svg { width: 14px; height: 14px; fill: var(--blue-xl); }
+.rp-asset-name { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 3px; }
+.rp-asset-ai { font-size: 11px; color: var(--text-m); line-height: 1.5; }
+.rp-asset-schema { font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: var(--blue); margin-top: 4px; }
+
+/* Quick wins */
+.rp-qw-list { display: flex; flex-direction: column; gap: 8px; }
+.rp-qw-item { display: flex; align-items: flex-start; gap: 14px; background: var(--off); border: 1px solid var(--border); padding: 13px 16px; }
+.rp-qw-item:nth-child(-n+2) { border-left: 3px solid var(--fail); }
+.rp-qw-item:nth-child(n+3):nth-child(-n+4) { border-left: 3px solid var(--amber); }
+.rp-qw-item:nth-child(n+5) { border-left: 3px solid var(--ok); }
+.rp-qw-num { font-family: 'Barlow Condensed', sans-serif; font-size: 22px; font-weight: 800; color: var(--text-f); line-height: 1; flex-shrink: 0; min-width: 26px; }
+.rp-qw-action { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 3px; }
+.rp-qw-effect { font-size: 11.5px; color: var(--text-m); }
+.rp-qw-timing { font-family: 'IBM Plex Mono', monospace; font-size: 9px; padding: 3px 8px; margin-left: auto; flex-shrink: 0; align-self: flex-start; }
+
+/* CTA */
+.rp-cta {
+  background: var(--navy);
+  padding: 48px 56px;
+  display: flex; align-items: center; justify-content: space-between; gap: 32px;
+  position: relative; overflow: hidden;
+  border-top: 1px solid rgba(0,87,255,0.2);
+}
+.rp-cta::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(0,87,255,0.08), transparent); pointer-events: none; }
+.rp-cta-left { position: relative; z-index: 1; }
+.rp-cta-eyebrow { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 2px; color: var(--blue-xl); text-transform: uppercase; margin-bottom: 8px; }
+.rp-cta-title { font-family: 'Barlow Condensed', sans-serif; font-size: 26px; font-weight: 800; color: #fff; margin-bottom: 6px; line-height: 1.2; }
+.rp-cta-sub { font-size: 12px; color: rgba(255,255,255,0.35); line-height: 1.6; }
+.rp-cta-btn { background: var(--blue); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 16px 32px; border: none; cursor: pointer; text-decoration: none; display: inline-block; transition: background .15s; position: relative; z-index: 1; white-space: nowrap; }
+.rp-cta-btn:hover { background: var(--blue-l); }
+.rp-disclaimer { padding: 16px 56px; background: var(--off); border-top: 1px solid var(--border); font-size: 11px; color: var(--text-f); line-height: 1.8; }
+
+/* Competitor analysis */
+.rp-comp-grid { display: flex; flex-direction: column; gap: 12px; }
+.rp-comp-card { background: var(--off); border: 1px solid var(--border); border-left: 4px solid var(--border); overflow: hidden; }
+.rp-comp-card:nth-child(1) { border-left-color: var(--fail); }
+.rp-comp-card:nth-child(2) { border-left-color: var(--amber); }
+.rp-comp-card:nth-child(3) { border-left-color: var(--blue); }
+.rp-comp-hdr { padding: 14px 18px 10px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid var(--border); }
+.rp-comp-name { font-family: 'Barlow Condensed', sans-serif; font-size: 18px; font-weight: 700; color: var(--text); }
+.rp-comp-pos { font-size: 12px; color: var(--text-m); margin-left: 4px; }
+.rp-comp-body { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0; }
+.rp-comp-cell { padding: 12px 16px; border-right: 1px solid var(--border); }
+.rp-comp-cell:last-child { border-right: none; }
+.rp-comp-cell-label { font-family: 'IBM Plex Mono', monospace; font-size: 8px; letter-spacing: 1.5px; color: var(--text-f); text-transform: uppercase; margin-bottom: 6px; }
+.rp-comp-cell-val { font-size: 12px; color: var(--text-s); line-height: 1.55; }
+.rp-comp-cell.gap .rp-comp-cell-val { color: var(--blue); font-weight: 500; }
+.rp-diff-strategy { background: var(--navy); padding: 20px 24px; border-left: 3px solid var(--amber); margin-top: 20px; }
+.rp-diff-label { font-family: 'IBM Plex Mono', monospace; font-size: 8px; letter-spacing: 2px; color: var(--amber-l); text-transform: uppercase; margin-bottom: 10px; }
+.rp-diff-text { font-size: 13px; color: rgba(255,255,255,0.7); line-height: 1.75; }
+.sub-title { font-family: 'Barlow Condensed', sans-serif; font-size: 19px; font-weight: 700; color: var(--text); margin-bottom: 16px; }
+.section-lead { background: #EEF3FF; border-left: 3px solid var(--blue); padding: 14px 18px; font-size: 13px; color: var(--text-s); line-height: 1.7; margin-bottom: 24px; }
+
+/* loading state */
+.rp-loading {
+  background: var(--navy2);
+  border-top: 1px solid var(--border-d);
+  padding: 80px 56px;
+  display: flex; flex-direction: column; align-items: center; gap: 20px; text-align: center;
+}
+.rp-loading-spinner { width: 44px; height: 44px; border: 3px solid rgba(0,87,255,0.15); border-top-color: var(--blue); border-radius: 50%; animation: spin .8s linear infinite; }
+.rp-loading-title { font-family: 'Barlow Condensed', sans-serif; font-size: 22px; font-weight: 700; color: #fff; letter-spacing: 1px; }
+.rp-loading-prog { width: 360px; height: 2px; background: rgba(255,255,255,0.06); overflow: hidden; }
+.rp-loading-fill { height: 100%; background: linear-gradient(90deg, var(--blue), var(--ok)); transition: width .4s; width: 0%; }
+.rp-loading-sub { font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: rgba(255,255,255,0.25); letter-spacing: 1.5px; }
+.rp-loading-step { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.35); letter-spacing: .5px; margin-top: -10px; }
+
+@media(max-width: 900px) {
+  .hero, .input-card { padding-left: 24px; padding-right: 24px; }
+  .input-card { margin: 0 24px 40px; }
+  .input-grid { grid-template-columns: 1fr; }
+  .rp-cover-inner, .rp-section, .rp-cta, .rp-disclaimer { padding-left: 28px; padding-right: 28px; }
+  .rp-kpi-row { grid-template-columns: 1fr 1fr; }
+  .rp-target-row { grid-template-columns: 1fr; }
+  .rp-content-grid { grid-template-columns: 1fr 1fr; }
+  .rp-write-rules { grid-template-columns: 1fr; }
+  .rp-assets-grid { grid-template-columns: 1fr; }
+  .rp-meta-grid { grid-template-columns: 1fr; }
+  .rp-meta-cell { border-right: none !important; }
+  .rp-cta { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="topbar-brand">
+    <div class="topbar-sq"><svg viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></div>
+    <div class="topbar-name">Enter IMC</div>
+  </div>
+  <div class="topbar-tag">GEO 引用策略報告</div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">AIO · AEO · GEO · LLMO Optimization</div>
+    <div class="hero-h1">品牌 <em>GEO 引用策略</em><br>報告產生器</div>
+    <div class="hero-h2">AI Answer Engine · Generative Engine Optimization</div>
+    <div class="hero-desc">輸入品牌資訊，系統將自動爬搜真實 PAA 問題，並由 AI 生成完整的 AIO / AEO / GEO 品牌引用策略報告，包含四層關鍵字地圖、30 個 PAA 問答庫、24 篇 GEO 內容計畫、SOP、KPI 與品牌資產盤點。</div>
+  </div>
+</div>
+
+
+<!-- INPUT CARD -->
+<div class="input-card">
+  <div class="input-card-title">品牌資訊輸入</div>
+  <div class="input-card-sub">Brand Information · 填入後點擊產出報告</div>
+  <div class="input-grid">
+    <div class="input-group">
+      <label class="input-label" for="brandUrl">品牌官網網址 *</label>
+      <input class="input-field mono" id="brandUrl" type="url" placeholder="https://example.com.tw" autocomplete="off">
+    </div>
+    <div class="input-group">
+      <label class="input-label" for="brandName">品牌名稱 *</label>
+      <input class="input-field" id="brandName" type="text" placeholder="例：三和工程檢測">
+    </div>
+    <div class="input-group">
+      <label class="input-label" for="brandIndustry">核心服務 / 產品類別 *</label>
+      <input class="input-field" id="brandIndustry" type="text" placeholder="例：居家健檢、結構安全評估">
+    </div>
+    <div class="input-group">
+      <label class="input-label" for="brandTarget">主要目標客群</label>
+      <input class="input-field" id="brandTarget" type="text" placeholder="例：有房屋安全疑慮的屋主">
+    </div>
+    <div class="input-group">
+      <label class="input-label" for="brandRegion">服務地區</label>
+      <input class="input-field" id="brandRegion" type="text" placeholder="例：台北、新北、桃園">
+    </div>
+
+    <div class="input-group full">
+      <label class="input-label" for="brandExtra">補充說明（品牌特色、競品、特殊需求）</label>
+      <input class="input-field" id="brandExtra" type="text" placeholder="例：台灣唯一取得XX認證的檢測機構，主要競品為OO公司">
+      <span class="input-hint">可留空，AI 會從爬搜結果補充</span>
+    </div>
+  </div>
+  <div class="generate-row">
+    <button class="gen-btn" id="genBtn" onclick="startGenerate()">
+      <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+      產出 GEO 引用策略報告
+    </button>
+    <div class="gen-status" id="genStatus">填入品牌資訊後點擊產出報告</div>
+  </div>
+  <div class="progress-bar-wrap" id="progressWrap">
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <div class="progress-label" id="progressLabel">準備中...</div>
+  </div>
+</div>
+
+<!-- REPORT OUTPUT -->
+<div id="reportWrap"></div>
+
+<script>
+// ── API KEY — 在此填入你的 Anthropic API Key ──
+const ANTHROPIC_API_KEY = '';
+
+// ── helpers ──
+const esc = s => String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+const $  = id => document.getElementById(id);
+const setProg = (pct, label) => {
+  $('progressFill').style.width = pct + '%';
+  $('progressLabel').textContent = label;
+  const lf = document.querySelector('.rp-loading-fill');
+  const ls = document.querySelector('.rp-loading-step');
+  if (lf) lf.style.width = pct + '%';
+  if (ls) ls.textContent = label;
+};
+
+// ── MAIN ──
+async function startGenerate() {
+  const url      = $('brandUrl').value.trim();
+  const name     = $('brandName').value.trim();
+  const industry = $('brandIndustry').value.trim();
+  const target   = $('brandTarget').value.trim();
+  const region   = $('brandRegion').value.trim();
+  const duration = '半年（6個月）';
+  const extra    = $('brandExtra').value.trim();
+
+  if (!url || !name || !industry) {
+    $('genStatus').textContent = '⚠ 請填寫品牌網址、名稱與核心服務';
+    return;
+  }
+
+  const btn = $('genBtn');
+  btn.disabled = true;
+  btn.innerHTML = `<div class="gen-spinner"></div> AI 生成中...`;
+  $('genStatus').textContent = '';
+  $('progressWrap').style.display = 'block';
+
+  // Loading state
+  $('reportWrap').innerHTML = `
+    <div class="rp-loading">
+      <div class="rp-loading-spinner"></div>
+      <div class="rp-loading-title">正在爬搜 PAA · 生成 GEO 引用策略報告</div>
+      <div class="rp-loading-prog"><div class="rp-loading-fill"></div></div>
+      <div class="rp-loading-step">初始化中...</div>
+      <div class="rp-loading-sub">AIO · AEO · GEO · LLMO OPTIMIZATION</div>
+    </div>`;
+  $('reportWrap').scrollIntoView({behavior:'smooth', block:'start'});
+
+  setProg(8, '準備爬搜品牌 PAA 資料...');
+
+  // ── STEP 1: PAA + brand research via web_search ──
+  let paaData = null;
+  try {
+    setProg(15, '爬搜 Google PAA 問題中（可能需要 30–60 秒）...');
+
+    const cleanName = name.replace(/[（(【\[].*/,'').trim(); // strip brackets
+
+    const paaPrompt = `你是 SEO 研究員。請針對以下品牌執行 8 次網路搜尋，從搜尋結果中收集真實的 PAA（People Also Ask）問題、相關搜尋詞、競品資訊，以及品牌資訊。
+
+品牌名稱：${cleanName}
+品牌官網：${url}
+核心服務：${industry}
+服務地區：${region || '台灣'}
+
+請依序搜尋：
+1. "${cleanName}"
+2. "${cleanName} 評價"
+3. "${cleanName} ${industry}"
+4. "${cleanName} 推薦"
+5. "${industry} 推薦 ${region || '台灣'}"
+6. "${industry} 比較 推薦"
+7. "${industry} 哪家好"
+8. "${cleanName} 競品" 或 "${cleanName} 評比"
+
+從每次搜尋結果中記錄：PAA 問題、相關搜尋詞、出現的競品品牌名稱及其特色描述。
+
+完成後輸出嚴格 JSON（不含任何 markdown fence 或說明文字）：
+{
+  "brand_summary": "從搜尋結果觀察到的品牌核心服務與定位（2-3句）",
+  "brand_industry": "品牌所屬產業細分類別",
+  "brand_usp": "品牌差異化特點（從搜尋結果或官網觀察到的）",
+  "brand_certifications": "品牌認證、資歷或特殊資格（從搜尋結果觀察到的，沒有就填空字串）",
+  "competitors": [
+    {"name":"競品品牌A","url":"競品官網（若知道）","strength":"競品主要優勢（從搜尋結果觀察）","weakness":"競品相對弱點","geo_score":"預估GEO就緒程度：高/中/低"},
+    {"name":"競品品牌B","url":"競品官網","strength":"主要優勢","weakness":"相對弱點","geo_score":"高/中/低"},
+    {"name":"競品品牌C","url":"競品官網","strength":"主要優勢","weakness":"相對弱點","geo_score":"高/中/低"}
+  ],
+  "market_position": "品牌在市場中的定位描述（與競品相比的差異化位置，2句）",
+  "geo_gap": "與競品相比，品牌在 GEO 優化上最大的機會點（1-2句）",
+  "paa_brand": ["與品牌直接相關的PAA問題1","問題2","問題3","問題4","問題5"],
+  "paa_industry": ["與${industry}產業相關的PAA問題1","問題2","問題3","問題4","問題5"],
+  "paa_decision": ["選購/決策類PAA問題1","問題2","問題3","問題4","問題5"],
+  "related_kw": ["相關搜尋關鍵字1","關鍵字2","關鍵字3","關鍵字4","關鍵字5","關鍵字6","關鍵字7","關鍵字8"],
+  "content_themes": ["官網或搜尋結果觀察到的主要內容主題1","主題2","主題3","主題4","主題5"]
+}
+
+重要：competitors 必須是真實存在的品牌（從搜尋結果觀察到），paa 問題盡量使用搜尋結果中真實出現的問題。`;
+
+    const paaRes = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'x-api-key': ANTHROPIC_API_KEY, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 3000,
+        tools: [{
+          type: 'web_search_20250305',
+          name: 'web_search',
+          max_uses: 8,
+          user_location: { type: 'approximate', country: 'TW', timezone: 'Asia/Taipei' }
+        }],
+        messages: [{ role: 'user', content: paaPrompt }]
+      })
+    });
+
+    const paaResp = await paaRes.json();
+    const paaText = (paaResp.content || []).filter(b => b.type === 'text').map(b => b.text).join('\n');
+    if (paaText) {
+      const m = paaText.replace(/```json|```/g,'').match(/\{[\s\S]*\}/);
+      if (m) { try { paaData = JSON.parse(m[0]); } catch(e) { console.warn('PAA parse err', e); } }
+    }
+    const paaCount = (paaData?.paa_brand?.length||0) + (paaData?.paa_industry?.length||0) + (paaData?.paa_decision?.length||0);
+    setProg(38, paaCount > 0 ? `✓ 取得 ${paaCount} 個真實 PAA 問題` : '搜尋完成，繼續生成策略...');
+  } catch(e) {
+    console.warn('PAA step failed:', e);
+    setProg(40, 'PAA 爬搜略過，繼續生成...');
+  }
+
+  // ── STEP 2: Full strategy plan ──
+  const compList = (paaData?.competitors||[]).map(c => typeof c === 'string' ? c : c.name).filter(Boolean);
+  const paaCtx = paaData
+    ? `【真實爬搜資料】
+品牌摘要：${paaData.brand_summary || ''}
+品牌 USP：${paaData.brand_usp || ''}
+品牌認證/資歷：${paaData.brand_certifications || '無'}
+市場定位：${paaData.market_position || ''}
+GEO 機會點：${paaData.geo_gap || ''}
+競品：${compList.join('、')}
+相關關鍵字：${(paaData.related_kw||[]).join('、')}
+官網內容主題：${(paaData.content_themes||[]).join('、')}
+
+品牌認知類 PAA（真實爬搜）：
+${(paaData.paa_brand||[]).map((q,i)=>`${i+1}. ${q}`).join('\n')}
+
+產業知識類 PAA（真實爬搜）：
+${(paaData.paa_industry||[]).map((q,i)=>`${i+6}. ${q}`).join('\n')}
+
+購買決策類 PAA（真實爬搜）：
+${(paaData.paa_decision||[]).map((q,i)=>`${i+11}. ${q}`).join('\n')}
+
+請優先使用上述真實 PAA 問題，再依需要補充。`
+    : `【請根據品牌「${name}」的「${industry}」服務語境，自行設計符合台灣 Google 搜尋 PAA 風格的問題】`;
+
+  try {
+    setProg(50, 'AI 生成品牌策略與競品分析...');
+
+    const today = new Date().toLocaleDateString('zh-TW');
+
+    // ══ CALL A: 品牌洞察 + 策略定位（純文字，無陣列，避免 token 超限）══
+    const promptA = `你是 Enter IMC 的 GEO 策略顧問，針對以下品牌給出策略定位摘要。
+
+品牌：${name}（${url}）
+服務：${industry}
+地區：${region||'台灣'}
+客群：${target||'待確認'}
+競品資訊：${compList.join('、')||'待爬搜確認'}
+品牌摘要：${paaData?.brand_summary||''}
+品牌USP：${paaData?.brand_usp||''}
+
+以繁體中文回覆，嚴格以 JSON 格式輸出，僅包含以下純文字欄位，不要有任何陣列、額外文字或 markdown：
+
+{
+  "brand_insight": "3句品牌核心洞察，每句用句號分隔",
+  "geo_positioning": "品牌GEO定位建議2句，說明應在哪類AI問答場景被引用",
+  "aio_target": "在Google AI Overview要出現的目標場景1句",
+  "aeo_target": "在ChatGPT/Perplexity被直接引用的目標場景1句",
+  "geo_target": "Schema與網站架構強化目標1句",
+  "competitor_intro": "競品市場競爭態勢導言2句",
+  "geo_diff_strategy": "差異化GEO搶佔策略3個方向，用句號分隔",
+  "market_gap": "目前市場上GEO內容最大的空缺機會1句",
+  "brand_voice": "品牌在GEO內容中應展現的語調與定位1句"
+}`;
+
+    const resA = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'x-api-key': ANTHROPIC_API_KEY, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
+      body: JSON.stringify({ model: 'claude-sonnet-4-20250514', max_tokens: 1200,
+        messages: [{ role: 'user', content: promptA }] })
+    });
+    const dataA = await resA.json();
+    const textA = (dataA.content||[]).filter(b=>b.type==='text').map(b=>b.text).join('\n');
+    if (!textA) throw new Error('Call A 無回應：' + JSON.stringify(dataA).slice(0,300));
+    const mA = textA.replace(/```json|```/g,'').match(/\{[\s\S]*\}/);
+    if (!mA) throw new Error('Call A JSON 解析失敗：' + textA.slice(0,300));
+    const sA = JSON.parse(mA[0]);
+
+    setProg(57, 'AI 生成競品分析與關鍵字地圖...');
+
+    // ══ CALL B: 競品分析 + 關鍵字四層 ══
+    const promptB = `你是 Enter IMC 的 GEO 策略顧問，針對「${name}」（${industry}，${region||'台灣'}）分析競品與設計關鍵字策略。
+
+已知競品：${compList.join('、')||'請從搜尋認知推斷'}
+相關關鍵字：${(paaData?.related_kw||[]).join('、')}
+品牌USP：${paaData?.brand_usp||''}
+
+以繁體中文回覆，嚴格以 JSON 格式輸出，不要有任何額外文字或 markdown：
+
+{
+  "competitor_analysis": [
+    {"name":"競品A名稱","positioning":"競品市場定位（10字內）","geo_weakness":"競品GEO弱點（15字內）","our_advantage":"我方優勢（15字內）","content_gap":"可搶佔內容缺口（15字內）"},
+    {"name":"競品B名稱","positioning":"定位","geo_weakness":"弱點","our_advantage":"優勢","content_gap":"缺口"},
+    {"name":"競品C名稱","positioning":"定位","geo_weakness":"弱點","our_advantage":"優勢","content_gap":"缺口"}
+  ],
+  "kw_layer1": [
+    {"kw":"品牌核心關鍵字1","intent":"搜尋意圖","ai_scene":"AI引用場景"},
+    {"kw":"品牌核心關鍵字2","intent":"搜尋意圖","ai_scene":"AI引用場景"},
+    {"kw":"品牌核心關鍵字3","intent":"搜尋意圖","ai_scene":"AI引用場景"},
+    {"kw":"品牌核心關鍵字4","intent":"搜尋意圖","ai_scene":"AI引用場景"}
+  ],
+  "kw_layer2": [
+    {"kw":"購買決策關鍵字1","intent":"選購意圖","content_dir":"GEO內容方向"},
+    {"kw":"購買決策關鍵字2","intent":"選購意圖","content_dir":"GEO內容方向"},
+    {"kw":"購買決策關鍵字3","intent":"選購意圖","content_dir":"GEO內容方向"},
+    {"kw":"購買決策關鍵字4","intent":"選購意圖","content_dir":"GEO內容方向"}
+  ],
+  "kw_layer3": [
+    {"kw":"知識型問題關鍵字1","paa_ref":"#1","geo_piece":"G01"},
+    {"kw":"知識型問題關鍵字2","paa_ref":"#5","geo_piece":"G02"},
+    {"kw":"知識型問題關鍵字3","paa_ref":"#11","geo_piece":"G06"},
+    {"kw":"知識型問題關鍵字4","paa_ref":"#16","geo_piece":"G09"}
+  ],
+  "kw_layer4": [
+    {"kw":"在地或長尾關鍵字1","context":"使用情境","strategy":"優化策略"},
+    {"kw":"在地或長尾關鍵字2","context":"使用情境","strategy":"優化策略"},
+    {"kw":"在地或長尾關鍵字3","context":"使用情境","strategy":"優化策略"}
+  ],
+  "paa_write_dos": ["必做1：開篇前2句直接給出核心答案","必做2：每篇植入品牌名稱3-5次","必做3：使用具體數字（年份/百分比/規格）","必做4：答案長度80-150字","必做5：搭配FAQPage Schema JSON-LD部署"],
+  "paa_write_donts": ["避免：模糊用詞（可能、也許、建議）","避免：過度行銷語言（最好的、無與倫比）","避免：沒有明確答案的迂迴表述","避免：答案超過200字","避免：缺乏結構化標記的純文字"]
+}`;
+
+    const resB = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'x-api-key': ANTHROPIC_API_KEY, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
+      body: JSON.stringify({ model: 'claude-sonnet-4-20250514', max_tokens: 2500,
+        messages: [{ role: 'user', content: promptB }] })
+    });
+    const dataB = await resB.json();
+    const textB = (dataB.content||[]).filter(b=>b.type==='text').map(b=>b.text).join('\n');
+    if (!textB) throw new Error('Call B 無回應：' + JSON.stringify(dataB).slice(0,300));
+    const mB = textB.replace(/```json|```/g,'').match(/\{[\s\S]*\}/);
+    if (!mB) throw new Error('Call B JSON 解析失敗：' + textB.slice(0,300));
+    const sB = JSON.parse(mB[0]);
+
+    setProg(68, 'AI 生成 PAA 問答庫（30題）...');
+
+    // ══ CALL C: PAA 30題 ══
+    const realPAAhint = paaData
+      ? `【真實爬搜PAA問題，請優先使用並補充至30題】
+群一（品牌認知）：${(paaData.paa_brand||[]).join(' / ')}
+群二（產業知識）：${(paaData.paa_industry||[]).join(' / ')}
+群三（購買決策）：${(paaData.paa_decision||[]).join(' / ')}`
+      : `【請根據「${name}」「${industry}」設計30個台灣Google PAA風格問題】`;
+
+    const promptC = `你是 Enter IMC 的 GEO 內容顧問，為「${name}」（${industry}，${region||'台灣'}）設計PAA問答庫。
+
+${realPAAhint}
+
+輸出30個問題，每題答案方向20-40字（答案方向，非完整文章），含品牌名植入。
+嚴格以 JSON 格式輸出，不要有任何額外文字或 markdown：
+
+{
+  "paa_g1_title": "主題群一名稱（品牌認知類）",
+  "paa_g1": [
+    {"q":"問題1","ans":"答案方向20-40字"},{"q":"問題2","ans":"答案"},{"q":"問題3","ans":"答案"},
+    {"q":"問題4","ans":"答案"},{"q":"問題5","ans":"答案"},{"q":"問題6","ans":"答案"},
+    {"q":"問題7","ans":"答案"},{"q":"問題8","ans":"答案"},{"q":"問題9","ans":"答案"},{"q":"問題10","ans":"答案"}
+  ],
+  "paa_g2_title": "主題群二名稱（產業技術類）",
+  "paa_g2": [
+    {"q":"問題1","ans":"答案"},{"q":"問題2","ans":"答案"},{"q":"問題3","ans":"答案"},
+    {"q":"問題4","ans":"答案"},{"q":"問題5","ans":"答案"},{"q":"問題6","ans":"答案"},
+    {"q":"問題7","ans":"答案"},{"q":"問題8","ans":"答案"},{"q":"問題9","ans":"答案"},{"q":"問題10","ans":"答案"}
+  ],
+  "paa_g3_title": "主題群三名稱（購買決策類）",
+  "paa_g3": [
+    {"q":"問題1","ans":"答案"},{"q":"問題2","ans":"答案"},{"q":"問題3","ans":"答案"},
+    {"q":"問題4","ans":"答案"},{"q":"問題5","ans":"答案"},{"q":"問題6","ans":"答案"},
+    {"q":"問題7","ans":"答案"},{"q":"問題8","ans":"答案"},{"q":"問題9","ans":"答案"},{"q":"問題10","ans":"答案"}
+  ]
+}`;
+
+    const resC = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'x-api-key': ANTHROPIC_API_KEY, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
+      body: JSON.stringify({ model: 'claude-sonnet-4-20250514', max_tokens: 3500,
+        messages: [{ role: 'user', content: promptC }] })
+    });
+    const dataC = await resC.json();
+    const textC = (dataC.content||[]).filter(b=>b.type==='text').map(b=>b.text).join('\n');
+    if (!textC) throw new Error('Call C 無回應：' + JSON.stringify(dataC).slice(0,300));
+    const mC = textC.replace(/```json|```/g,'').match(/\{[\s\S]*\}/);
+    if (!mC) throw new Error('Call C JSON 解析失敗：' + textC.slice(0,300));
+    const sC = JSON.parse(mC[0]);
+
+    setProg(80, 'AI 生成 GEO 內容計畫與執行架構...');
+
+    // ══ CALL D: 內容計畫 + 部落格 + 新聞 + KPI + 資產 ══
+    const promptD = `你是 Enter IMC 的 GEO 內容顧問，為「${name}」（${industry}，${region||'台灣'}）規劃半年 GEO 內容執行架構（共24篇，每月4篇，Month 1-6）。
+
+關鍵字方向：${(sB.kw_layer1||[]).map(k=>k.kw).join('、')}
+
+注意：geo_contents 必須輸出 24 篇（G01–G24），Month 1-6 各4篇。
+
+嚴格以 JSON 格式輸出，不要有任何額外文字或 markdown：
+
+{
+  "geo_contents": [
+    {"code":"G01","title":"GEO文章題目1（具體可搜尋、含品牌名）","kw":"目標關鍵字","schema":"Article+FAQPage","paa":"#1,#2","month":"Month 1"},
+    {"code":"G02","title":"題目2","kw":"關鍵字","schema":"Article+FAQPage","paa":"#3,#4","month":"Month 1"},
+    {"code":"G03","title":"題目3","kw":"關鍵字","schema":"Article+HowTo","paa":"#5,#6","month":"Month 1"},
+    {"code":"G04","title":"題目4","kw":"關鍵字","schema":"Article+FAQPage","paa":"#7,#8","month":"Month 1"},
+    {"code":"G05","title":"題目5","kw":"關鍵字","schema":"Article+FAQPage","paa":"#9,#10","month":"Month 2"},
+    {"code":"G06","title":"題目6","kw":"關鍵字","schema":"Article+HowTo","paa":"#11,#12","month":"Month 2"},
+    {"code":"G07","title":"題目7","kw":"關鍵字","schema":"Article+Product","paa":"#13","month":"Month 2"},
+    {"code":"G08","title":"題目8","kw":"關鍵字","schema":"Article+FAQPage","paa":"#14,#15","month":"Month 2"},
+    {"code":"G09","title":"題目9","kw":"關鍵字","schema":"Article+HowTo","paa":"#16,#17","month":"Month 3"},
+    {"code":"G10","title":"題目10","kw":"關鍵字","schema":"Article+Organization","paa":"#18,#19","month":"Month 3"},
+    {"code":"G11","title":"題目11","kw":"關鍵字","schema":"Article+FAQPage","paa":"#20,#21","month":"Month 3"},
+    {"code":"G12","title":"題目12","kw":"關鍵字","schema":"Article+FAQPage","paa":"#22,#23","month":"Month 3"},
+    {"code":"G13","title":"題目13","kw":"關鍵字","schema":"Article+FAQPage","paa":"#1,#24","month":"Month 4"},
+    {"code":"G14","title":"題目14","kw":"關鍵字","schema":"Article+HowTo","paa":"#25,#26","month":"Month 4"},
+    {"code":"G15","title":"題目15","kw":"關鍵字","schema":"Article+FAQPage","paa":"#27,#28","month":"Month 4"},
+    {"code":"G16","title":"題目16","kw":"關鍵字","schema":"Article+Product","paa":"#29,#30","month":"Month 4"},
+    {"code":"G17","title":"題目17","kw":"關鍵字","schema":"Article+FAQPage","paa":"#2,#5","month":"Month 5"},
+    {"code":"G18","title":"題目18","kw":"關鍵字","schema":"Article+HowTo","paa":"#8,#11","month":"Month 5"},
+    {"code":"G19","title":"題目19","kw":"關鍵字","schema":"Article+FAQPage","paa":"#14,#17","month":"Month 5"},
+    {"code":"G20","title":"題目20","kw":"關鍵字","schema":"Article+Organization","paa":"#20,#23","month":"Month 5"},
+    {"code":"G21","title":"題目21","kw":"關鍵字","schema":"Article+FAQPage","paa":"#3,#6","month":"Month 6"},
+    {"code":"G22","title":"題目22","kw":"關鍵字","schema":"Article+HowTo","paa":"#9,#12","month":"Month 6"},
+    {"code":"G23","title":"題目23","kw":"關鍵字","schema":"Article+FAQPage","paa":"#15,#18","month":"Month 6"},
+    {"code":"G24","title":"題目24","kw":"關鍵字","schema":"Article+FAQPage","paa":"#21,#24","month":"Month 6"}
+  ],
+  "blog1_title":"部落格B01題目（年度指南型）","blog1_target":"目標讀者","blog1_platform":"發布平台",
+  "blog2_title":"部落格B02題目（品牌故事型）","blog2_target":"目標讀者","blog2_platform":"發布平台",
+  "blog3_title":"部落格B03題目（E-E-A-T深度型）","blog3_target":"目標讀者","blog3_platform":"發布平台",
+  "news_theme":"新聞連播核心標題","news_kw":"核心關鍵字2-3個","news_url_embed":"品牌URL植入建議",
+  "assets":[
+    {"name":"品牌資產1","ai_scene":"AI引用場景","schema":"Schema類型"},
+    {"name":"品牌資產2","ai_scene":"AI引用場景","schema":"Schema類型"},
+    {"name":"品牌資產3","ai_scene":"AI引用場景","schema":"Schema類型"},
+    {"name":"品牌資產4","ai_scene":"AI引用場景","schema":"Schema類型"},
+    {"name":"品牌資產5","ai_scene":"AI引用場景","schema":"Schema類型"},
+    {"name":"品牌資產6","ai_scene":"AI引用場景","schema":"Schema類型"}
+  ],
+  "quick_wins":[
+    {"action":"QW行動1","effect":"預期效益","timing":"Week 1"},
+    {"action":"QW行動2","effect":"預期效益","timing":"Week 1"},
+    {"action":"QW行動3","effect":"預期效益","timing":"Week 1"},
+    {"action":"QW行動4","effect":"預期效益","timing":"Week 2"},
+    {"action":"QW行動5","effect":"預期效益","timing":"Week 2"},
+    {"action":"QW行動6","effect":"預期效益","timing":"Week 2"}
+  ],
+  "month1":"Month 1重點策略","month2":"Month 2重點策略","month3":"Month 3重點策略","month4":"Month 4重點策略","month5":"Month 5重點策略","month6":"Month 6重點策略",
+  "kpi_geo_base":"0（待確認）","kpi_geo_m2":"55+/100","kpi_geo_m3":"70+/100","kpi_geo_m6":"85+/100",
+  "kpi_index_m2":"6+ 篇","kpi_index_m3":"15+ 篇","kpi_index_m6":"24+ 篇",
+  "kpi_ai_m2":"3+ 個關鍵字","kpi_ai_m3":"8+ 個關鍵字",
+  "kpi_links_m2":"12 個","kpi_schema_m2":"5 類","kpi_schema_m3":"8 類"
+}`;
+
+    const resD = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'x-api-key': ANTHROPIC_API_KEY, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
+      body: JSON.stringify({ model: 'claude-sonnet-4-20250514', max_tokens: 3000,
+        messages: [{ role: 'user', content: promptD }] })
+    });
+    const dataD = await resD.json();
+    const textD = (dataD.content||[]).filter(b=>b.type==='text').map(b=>b.text).join('\n');
+    if (!textD) throw new Error('Call D 無回應：' + JSON.stringify(dataD).slice(0,300));
+    const mD = textD.replace(/```json|```/g,'').match(/\{[\s\S]*\}/);
+    if (!mD) throw new Error('Call D JSON 解析失敗：' + textD.slice(0,300));
+    const sD = JSON.parse(mD[0]);
+
+    // Merge all four results
+    const s = { ...sA, ...sB, ...sC, ...sD };
+
+    setProg(92, '組裝完整計畫書...');
+
+    setProg(92, '組裝完整計畫書...');
+    renderReport(s, paaData, { url, name, industry, target, region, extra });
+    setProg(100, '計畫書生成完成！');
+    $('genStatus').textContent = `✓ 報告已生成 · ${new Date().toLocaleTimeString('zh-TW')}`;
+    setProg(100, '計畫書生成完成！');
+    $('genStatus').textContent = `✓ 報告已生成 · ${new Date().toLocaleTimeString('zh-TW')}`;
+
+  } catch(e) {
+    console.error('Strategy step failed:', e);
+    $('reportWrap').innerHTML = `<div style="padding:48px 56px;background:#fff;color:red;font-size:13px">生成失敗：${esc(e.message)}</div>`;
+    $('genStatus').textContent = '⚠ 生成失敗，請再試';
+  }
+
+  btn.disabled = false;
+  btn.innerHTML = `<svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:#fff"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg> 重新產出計畫書`;
+  $('progressWrap').style.display = 'none';
+}
+
+// ── RENDER ──
+function renderReport(s, paa, info) {
+  const today = new Date().toLocaleDateString('zh-TW');
+  const planEnd = (() => { const d=new Date(); d.setMonth(d.getMonth()+6); return d.toLocaleDateString('zh-TW'); })();
+  const paaCount = (paa?.paa_brand?.length||0)+(paa?.paa_industry?.length||0)+(paa?.paa_decision?.length||0);
+  const hasRealPAA = paaCount > 0;
+
+  const tagM = m => m==='Month 1'?`<span class="tag-m1">Month 1</span>`:m==='Month 2'?`<span class="tag-m2">Month 2</span>`:m==='Month 3'?`<span class="tag-m3">Month 3</span>`:m==='Month 4'?`<span class="tag-m1" style="opacity:.75">Month 4</span>`:m==='Month 5'?`<span class="tag-m2" style="opacity:.75">Month 5</span>`:`<span class="tag-m3" style="opacity:.75">Month 6</span>`;
+  const tagS = s => `<span class="tag-blue">${esc(s)}</span>`;
+
+  const kwRows = (arr, cols) => (arr||[]).map(r => `<tr>${cols.map(c=>`<td>${esc(r[c]||'')}</td>`).join('')}</tr>`).join('');
+
+  const paaRows = (group, offset) => (group||[]).map((item,i)=>`
+    <tr>
+      <td><strong style="color:var(--blue);font-family:'IBM Plex Mono',monospace;font-size:10px">#${offset+i+1}</strong></td>
+      <td>${esc(item.q)}</td>
+      <td style="color:var(--text-s)">${esc(item.ans)}</td>
+    </tr>`).join('');
+
+  const contentCards = (s.geo_contents||[]).map(c=>`
+    <div class="rp-content-card">
+      <div class="rp-content-code">${esc(c.code)}</div>
+      <div class="rp-content-title">${esc(c.title)}</div>
+      <div class="rp-content-meta">${tagM(c.month)} ${tagS(c.schema)}</div>
+      <div class="rp-content-kw">${esc(c.kw)}</div>
+    </div>`).join('');
+
+  const assetCells = (s.assets||[]).map(a=>`
+    <div class="rp-asset-cell">
+      <div class="rp-asset-icon"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+      <div>
+        <div class="rp-asset-name">${esc(a.name)}</div>
+        <div class="rp-asset-ai">${esc(a.ai_scene)}</div>
+        <div class="rp-asset-schema">${esc(a.schema)}</div>
+      </div>
+    </div>`).join('');
+
+  const qwItems = (s.quick_wins||[]).map((w,i)=>`
+    <div class="rp-qw-item">
+      <div class="rp-qw-num">${String(i+1).padStart(2,'0')}</div>
+      <div style="flex:1">
+        <div class="rp-qw-action">${esc(w.action)}</div>
+        <div class="rp-qw-effect">${esc(w.effect)}</div>
+      </div>
+      <div class="rp-qw-timing ${i<2?'tag-warn':i<4?'tag-m2':'tag-ok'}">${esc(w.timing)}</div>
+    </div>`).join('');
+
+  const sopSteps = [
+    {phase:'需求訪談',title:'需求訪談 & 資料收集',desc:`確認「${esc(info.name)}」品牌目標、競品方向，取得 GSC/GA4 存取權限，確認服務地區與目標客群。`},
+    {phase:'官網健檢',title:'官網健檢報告',desc:'執行技術 SEO + GEO 語意模組稽核，輸出 PDF 健檢報告，安排說明會討論優先改善項目。'},
+    {phase:'關鍵字設計',title:'關鍵字矩陣 & PAA 問答庫設計',desc:`建立「${esc(info.name)}」四層關鍵字 Topic Cluster 架構，完成 30 個 PAA 問答庫設計。`},
+    {phase:'GEO內容',title:'GEO 內容建置（24篇）',desc:'依 Cluster 分批建置（每月4篇），每篇 SEO + GEO 雙軌審核，含完整 FAQPage Schema JSON-LD 部署。'},
+    {phase:'部落格文章',title:'部落格文章（3篇）',desc:'E-E-A-T 深度寫作，品牌故事 × 產業洞察 × 使用指南，各含完整 Schema 標記與外鏈策略。'},
+    {phase:'新聞連播',title:'網路新聞連播網（12網）',desc:'含 Yahoo、LINE TODAY 至少 12 網聯播，超過聯播數不額外收費，提供刊登截圖報告，建立品牌 E-E-A-T 外部引用信號。'},
+    {phase:'成效報告',title:'KPI 成效追蹤報告',desc:`追蹤「${esc(info.name)}」AI 引用頻率、GEO 就緒評分、Organic CTR 等 KPI，輸出季末優化建議。`}
+  ].map((st,i)=>`
+    <div class="rp-sop-step">
+      <div class="rp-sop-dot"><span class="rp-sop-n">${i+1}</span></div>
+      <div class="rp-sop-body">
+        <div class="rp-sop-phase">${esc(st.phase)}</div>
+        <div class="rp-sop-title">${esc(st.title)}</div>
+        <div class="rp-sop-desc">${st.desc}</div>
+      </div>
+    </div>`).join('');
+
+  const html = `
+  <!-- COVER -->
+  <div class="rp-cover">
+    <div class="rp-cover-accent"></div>
+    <div class="rp-cover-accent2"></div>
+    <div class="rp-cover-inner">
+      <div class="rp-cover-top">
+        <div class="rp-agency">
+          <div class="rp-agency-sq"><svg viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></div>
+          <div class="rp-agency-info">
+            <div class="rp-agency-name">Enter IMC</div>
+            <div class="rp-agency-sub">確認鍵智創科技股份有限公司 出具</div>
+          </div>
+        </div>
+        <div class="rp-cover-date">${today}</div>
+      </div>
+      <div class="rp-cover-eyebrow">AI Answer Engine Optimization · Generative Engine Optimization</div>
+      <div class="rp-cover-h1"><em>${esc(info.name)}</em><br>品牌 AIO / AEO / GEO</div>
+      <div class="rp-cover-h2">引用策略計畫書</div>
+      <div class="rp-meta-grid">
+        <div class="rp-meta-cell"><div class="rp-meta-label">品牌名稱</div><div class="rp-meta-val">${esc(info.name)}</div></div>
+        <div class="rp-meta-cell"><div class="rp-meta-label">核心服務</div><div class="rp-meta-val">${esc(info.industry)}</div></div>
+        <div class="rp-meta-cell"><div class="rp-meta-label">計畫期程</div><div class="rp-meta-val">${today} — ${planEnd}（半年方案）</div></div>
+        <div class="rp-meta-cell"><div class="rp-meta-label">出具單位</div><div class="rp-meta-val">確認鍵智創科技股份有限公司</div></div>
+      </div>
+      <div class="rp-kpi-row">
+        <div class="rp-kpi-cell"><div class="rp-kpi-num">24<span class="rp-kpi-unit">篇</span></div><div class="rp-kpi-label">GEO 內容建置</div></div>
+        <div class="rp-kpi-cell"><div class="rp-kpi-num">3<span class="rp-kpi-unit">篇</span></div><div class="rp-kpi-label">部落格</div></div>
+        <div class="rp-kpi-cell"><div class="rp-kpi-num">12<span class="rp-kpi-unit">網</span></div><div class="rp-kpi-label">新聞連播</div></div>
+        <div class="rp-kpi-cell"><div class="rp-kpi-num">1<span class="rp-kpi-unit">份</span></div><div class="rp-kpi-label">官網健檢報告</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PART 1: 引用策略 -->
+  <div class="rp-section">
+    <div class="rp-section-hdr">
+      <span class="rp-section-num">第一部分</span>
+      <h2 class="rp-section-title">AIO / AEO / <em>GEO</em> 引用策略</h2>
+    </div>
+    <div class="rp-insight">${esc(s.brand_insight||'')}</div>
+    <div class="rp-target-row">
+      <div class="rp-target-card aio">
+        <div class="rp-target-badge">AIO · Google AI Overview</div>
+        <div class="rp-target-text">${esc(s.aio_target||'')}</div>
+      </div>
+      <div class="rp-target-card aeo">
+        <div class="rp-target-badge">AEO · Answer Engine</div>
+        <div class="rp-target-text">${esc(s.aeo_target||'')}</div>
+      </div>
+      <div class="rp-target-card geo">
+        <div class="rp-target-badge">GEO · Generative Engine</div>
+        <div class="rp-target-text">${esc(s.geo_target||'')}</div>
+      </div>
+    </div>
+    <div class="sub-title">1.1 四層關鍵字策略地圖</div>
+    <div class="rp-kw-layers">
+      <div class="rp-kw-layer">
+        <div class="rp-kw-layer-hdr">
+          <span class="rp-layer-badge l1">第一層</span>
+          <span class="rp-layer-name">品牌核心關鍵字</span>
+          <span class="rp-layer-desc">品牌直接搜尋 → AIO / AI Overview 引用</span>
+        </div>
+        <table class="rp-table"><thead><tr><th>關鍵字</th><th>搜尋意圖</th><th>目標引用場景</th></tr></thead>
+        <tbody>${kwRows(s.kw_layer1, ['kw','intent','ai_scene'])}</tbody></table>
+      </div>
+      <div class="rp-kw-layer">
+        <div class="rp-kw-layer-hdr">
+          <span class="rp-layer-badge l2">第二層</span>
+          <span class="rp-layer-name">購買決策關鍵字（Commercial Intent）</span>
+          <span class="rp-layer-desc">選購比較 → GEO 內容方向</span>
+        </div>
+        <table class="rp-table"><thead><tr><th>關鍵字</th><th>搜尋意圖</th><th>對應內容方向</th></tr></thead>
+        <tbody>${kwRows(s.kw_layer2, ['kw','intent','content_dir'])}</tbody></table>
+      </div>
+      <div class="rp-kw-layer">
+        <div class="rp-kw-layer-hdr">
+          <span class="rp-layer-badge l3">第三層</span>
+          <span class="rp-layer-name">知識型關鍵字（AEO 核心）</span>
+          <span class="rp-layer-desc">技術/知識問題 → ChatGPT / Perplexity 直接引用</span>
+        </div>
+        <table class="rp-table"><thead><tr><th>關鍵字 / 問題</th><th>對應 PAA</th><th>對應 GEO 內容</th></tr></thead>
+        <tbody>${kwRows(s.kw_layer3, ['kw','paa_ref','geo_piece'])}</tbody></table>
+      </div>
+      <div class="rp-kw-layer">
+        <div class="rp-kw-layer-hdr">
+          <span class="rp-layer-badge l4">第四層</span>
+          <span class="rp-layer-name">在地化與長尾關鍵字</span>
+          <span class="rp-layer-desc">在地搜尋 → LocalBusiness Schema + GBP 優化</span>
+        </div>
+        <table class="rp-table"><thead><tr><th>關鍵字</th><th>搜尋情境</th><th>優化策略</th></tr></thead>
+        <tbody>${kwRows(s.kw_layer4, ['kw','context','strategy'])}</tbody></table>
+      </div>
+    </div>
+  </div>
+
+  <!-- PART 2: 競品分析 -->
+  <div class="rp-section">
+    <div class="rp-section-hdr">
+      <span class="rp-section-num">第二部分</span>
+      <h2 class="rp-section-title">競品 <em>GEO 分析</em></h2>
+    </div>
+    <div class="section-lead">${esc(s.competitor_intro||'基於搜尋結果爬搜，以下為主要競品的 GEO 就緒程度分析與差異化機會點。')}</div>
+    <div class="rp-comp-grid">
+      ${(s.competitor_analysis||[]).map(c=>`
+        <div class="rp-comp-card">
+          <div class="rp-comp-hdr">
+            <div class="rp-comp-name">${esc(c.name||'')}</div>
+            <div class="rp-comp-pos">${esc(c.positioning||'')}</div>
+          </div>
+          <div class="rp-comp-body">
+            <div class="rp-comp-cell">
+              <div class="rp-comp-cell-label">GEO 弱點</div>
+              <div class="rp-comp-cell-val">${esc(c.geo_weakness||'')}</div>
+            </div>
+            <div class="rp-comp-cell">
+              <div class="rp-comp-cell-label">我方差異化優勢</div>
+              <div class="rp-comp-cell-val">${esc(c.our_advantage||'')}</div>
+            </div>
+            <div class="rp-comp-cell gap">
+              <div class="rp-comp-cell-label">可搶佔的內容缺口</div>
+              <div class="rp-comp-cell-val">${esc(c.content_gap||'')}</div>
+            </div>
+          </div>
+        </div>`).join('')}
+    </div>
+    <div class="rp-diff-strategy">
+      <div class="rp-diff-label">差異化 GEO 搶佔策略</div>
+      <div class="rp-diff-text">${esc(s.geo_diff_strategy||'').replace(/。/g,'。<br>')}</div>
+    </div>
+  </div>
+
+  <!-- PART 3: PAA -->
+  <div class="rp-section">
+    <div class="rp-section-hdr">
+      <span class="rp-section-num">第三部分</span>
+      <h2 class="rp-section-title">PAA 問答策略 <em>（People Also Ask）</em></h2>
+    </div>
+    <div class="section-lead">
+      針對「${esc(info.name)}」品牌服務，設計三大問答主題群、共 <strong>30 個核心 PAA 問題</strong>及 GEO 答案方向，作為 24 篇 GEO 內容建置的寫作骨幹。
+    </div>
+    <div class="${hasRealPAA?'rp-paa-source-badge real':'rp-paa-source-badge gen'}">
+      ${hasRealPAA
+        ? `<svg viewBox="0 0 24 24" style="width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2.5"><polyline points="20 6 9 17 4 12"/></svg> 已爬搜 ${paaCount} 個真實 Google PAA 問題，優先採用（來源：Google Search）`
+        : `<svg viewBox="0 0 24 24" style="width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> PAA 爬搜未取得，問題由 AI 依品牌語境設計`}
+    </div>
+    <div class="rp-paa-groups">
+      <div>
+        <div class="rp-paa-group-title">主題群一｜${esc(s.paa_g1_title||'品牌認知與信任建立')}（#1—10）</div>
+        <div style="overflow:hidden;border:1px solid var(--border)">
+          <table class="rp-table"><thead><tr><th>#</th><th>PAA 問題</th><th>GEO 答案方向（含品牌植入）</th></tr></thead>
+          <tbody>${paaRows(s.paa_g1,0)}</tbody></table>
+        </div>
+      </div>
+      <div>
+        <div class="rp-paa-group-title">主題群二｜${esc(s.paa_g2_title||'產業技術與知識問答')}（#11—20）</div>
+        <div style="overflow:hidden;border:1px solid var(--border)">
+          <table class="rp-table"><thead><tr><th>#</th><th>PAA 問題</th><th>GEO 答案方向（含品牌植入）</th></tr></thead>
+          <tbody>${paaRows(s.paa_g2,10)}</tbody></table>
+        </div>
+      </div>
+      <div>
+        <div class="rp-paa-group-title">主題群三｜${esc(s.paa_g3_title||'購買決策與使用指南')}（#21—30）</div>
+        <div style="overflow:hidden;border:1px solid var(--border)">
+          <table class="rp-table"><thead><tr><th>#</th><th>PAA 問題</th><th>GEO 答案方向（含品牌植入）</th></tr></thead>
+          <tbody>${paaRows(s.paa_g3,20)}</tbody></table>
+        </div>
+      </div>
+    </div>
+    <div class="rp-write-rules">
+      <div class="rp-write-box do">
+        <div class="rp-write-title">✅ 必做（AI 引用率 +）</div>
+        <ul class="rp-write-list">${(s.paa_write_dos||[]).map(d=>`<li>${esc(d)}</li>`).join('')}</ul>
+      </div>
+      <div class="rp-write-box dont">
+        <div class="rp-write-title">❌ 避免（AI 引用率 -）</div>
+        <ul class="rp-write-list">${(s.paa_write_donts||[]).map(d=>`<li>${esc(d)}</li>`).join('')}</ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- PART 4: GEO 內容 -->
+  <div class="rp-section">
+    <div class="rp-section-hdr">
+      <span class="rp-section-num">第四部分</span>
+      <h2 class="rp-section-title">24 篇 <em>GEO 內容建置計畫</em></h2>
+    </div>
+    <div class="section-lead">每篇 GEO 內容均對應明確的 PAA 問答群、目標關鍵字與 Schema 類型，以「AI 引用最優化」原則設計，確保結構清晰、答案直接、品牌信號強烈。</div>
+    <div class="rp-content-grid">${contentCards}</div>
+  </div>
+
+  <!-- PART 5: 部落格 + 新聞 -->
+  <div class="rp-section">
+    <div class="rp-section-hdr">
+      <span class="rp-section-num">第五部分</span>
+      <h2 class="rp-section-title">部落格 <em>＋ 新聞連播計畫</em></h2>
+    </div>
+    <div class="sub-title">4.1 部落格文章規劃（3 篇）</div>
+    <p style="font-size:13px;color:var(--text-m);margin-bottom:16px;line-height:1.7">部落格定位為「品牌聲量 ＋ 外鏈資產」，與 GEO 內容的「知識解答」形成互補，以品牌故事、生活情境切入，提升品牌搜尋聲量與 E-E-A-T 信號。</p>
+    <div class="rp-blog-list">
+      <div class="rp-blog-item">
+        <div class="rp-blog-num">B01</div>
+        <div><div class="rp-blog-title">${esc(s.blog1_title||'')}</div><div class="rp-blog-meta">目標讀者：${esc(s.blog1_target||'–')} · 發布平台：${esc(s.blog1_platform||'–')}</div></div>
+        <span class="tag-m1">Month 1</span>
+      </div>
+      <div class="rp-blog-item">
+        <div class="rp-blog-num">B02</div>
+        <div><div class="rp-blog-title">${esc(s.blog2_title||'')}</div><div class="rp-blog-meta">目標讀者：${esc(s.blog2_target||'–')} · 發布平台：${esc(s.blog2_platform||'–')}</div></div>
+        <span class="tag-m2">Month 2</span>
+      </div>
+      <div class="rp-blog-item">
+        <div class="rp-blog-num">B03</div>
+        <div><div class="rp-blog-title">${esc(s.blog3_title||'')}</div><div class="rp-blog-meta">目標讀者：${esc(s.blog3_target||'–')} · 發布平台：${esc(s.blog3_platform||'–')}</div></div>
+        <span class="tag-m3">Month 3</span>
+      </div>
+    </div>
+    <div class="rp-divider"></div>
+    <div class="sub-title">4.2 網路新聞連播計畫（1 檔 × 12 網）</div>
+    <p style="font-size:13px;color:var(--text-m);margin-bottom:16px;line-height:1.7">新聞稿同步發布至多個新聞媒體平台，含 Yahoo 新聞及 LINE TODAY，至少 12 網聯播，超過聯播數不額外收費，一次建立大量高權重外部連結，強化品牌 E-E-A-T 與 AI 引用信任度。</p>
+    <div class="rp-news-block">
+      <div class="rp-news-title">新聞稿規格說明</div>
+      <div class="rp-news-kv">
+        <div class="rp-news-k">新聞主題</div><div class="rp-news-v">${esc(s.news_theme||'–')}</div>
+        <div class="rp-news-k">發布平台（12 網）</div><div class="rp-news-v">Yahoo 新聞、LINE TODAY、life、PChome、Match、yam、OwlNews、民生頭條、台灣電報、商傳媒、民生好報、火報、Amm娛樂新聞、電傳媒、新民生報、法訊動新聞、爽爆⋯等平台（含 Yahoo 及 LINE，至少 12 網聯播，超過聯播數不額外收費）</div>
+        <div class="rp-news-k">核心關鍵字</div><div class="rp-news-v">${esc(s.news_kw||'–')}</div>
+        <div class="rp-news-k">品牌URL植入</div><div class="rp-news-v">${esc(s.news_url_embed||'–')}</div>
+        <div class="rp-news-k">SEO 效益</div><div class="rp-news-v">12 個外部連結 → 強化域名權威度 → 提升 AI 引用信任度 → 加速 GEO 評分提升</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PART 6: SOP -->
+  <div class="rp-section">
+    <div class="rp-section-hdr">
+      <span class="rp-section-num">第六部分</span>
+      <h2 class="rp-section-title">GEO 內容製作 <em>SOP</em></h2>
+    </div>
+    <div class="rp-sop">${sopSteps}</div>
+  </div>
+
+  <!-- PART 7: KPI -->
+  <div class="rp-section">
+    <div class="rp-section-hdr">
+      <span class="rp-section-num">第七部分</span>
+      <h2 class="rp-section-title">專案 <em>KPI 成效指標</em></h2>
+    </div>
+    <div class="sub-title">三個月 KPI 追蹤目標</div>
+    <div class="rp-kpi-wrap">
+      <table class="rp-table">
+        <thead><tr><th>KPI 指標</th><th>基準值（現況）</th><th>Month 3 目標</th><th>Month 6 目標（半年末）</th></tr></thead>
+        <tbody>
+          <tr><td><strong>GEO 就緒評分</strong></td><td>${esc(s.kpi_geo_base||'0/100')}</td><td style="color:var(--amber);font-weight:600">${esc(s.kpi_geo_m2||'55+/100')}</td><td style="color:var(--ok);font-weight:600">${esc(s.kpi_geo_m6||'85+/100')}</td></tr>
+          <tr><td><strong>Google 收錄知識文章數</strong></td><td>待確認基準</td><td style="color:var(--amber);font-weight:600">${esc(s.kpi_index_m2||'12+ 篇')}</td><td style="color:var(--ok);font-weight:600">${esc(s.kpi_index_m6||'24+ 篇')}</td></tr>
+          <tr><td><strong>AI Overview 出現關鍵字數</strong></td><td>0 個（待確認）</td><td style="color:var(--amber);font-weight:600">${esc(s.kpi_ai_m2||'3+ 個')}</td><td style="color:var(--ok);font-weight:600">${esc(s.kpi_ai_m3||'8+ 個')}</td></tr>
+          <tr><td><strong>外部媒體連結（新聞連播）</strong></td><td>0 個（本季）</td><td style="color:var(--blue);font-weight:600">${esc(s.kpi_links_m2||'12 個')}</td><td>12 個維持</td></tr>
+          <tr><td><strong>有機搜尋流量（月均）</strong></td><td>待 GSC 確認基準</td><td>+20% vs 基準</td><td>+40% vs 基準</td></tr>
+          <tr><td><strong>Schema 部署完整度</strong></td><td>0 類</td><td style="color:var(--amber);font-weight:600">${esc(s.kpi_schema_m2||'5 類')}</td><td style="color:var(--ok);font-weight:600">${esc(s.kpi_schema_m3||'8 類')}</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- APPENDIX -->
+  <div class="rp-section">
+    <div class="rp-section-hdr">
+      <span class="rp-section-num">附錄</span>
+      <h2 class="rp-section-title">品牌 GEO 資產盤點 <em>＆ 快速獲益清單</em></h2>
+    </div>
+    <div class="sub-title">A. 品牌 GEO 護城河資產</div>
+    <p style="font-size:12px;color:var(--text-m);margin-bottom:16px;line-height:1.7">以下品牌資產是競爭對手難以複製的 GEO 引用核心，每項透過 Schema 結構化後，即可成為 AI 強制引用的「事實依據」：</p>
+    <div class="rp-assets-grid">${assetCells}</div>
+    <div class="rp-divider"></div>
+    <div class="sub-title">B. GEO 快速獲益行動清單（Quick Wins · 2 週內可完成）</div>
+    <p style="font-size:12px;color:var(--text-m);margin-bottom:16px;line-height:1.7">以下行動無需等待內容建置完成，可在專案啟動後立即執行，快速改善 AI 可見性：</p>
+    <div class="rp-qw-list">${qwItems}</div>
+  </div>
+
+  <!-- CTA -->
+  <div class="rp-cta">
+    <div class="rp-cta-left">
+      <div class="rp-cta-eyebrow">啟動「${esc(info.name)}」GEO 之旅</div>
+      <div class="rp-cta-title">讓 ChatGPT、Perplexity、Google AI Overview<br>每次被問到相關問題，第一個引用的就是「${esc(info.name)}」</div>
+      <div class="rp-cta-sub">確認鍵智創科技股份有限公司 · enterimc.com · ${today}</div>
+    </div>
+    <a class="rp-cta-btn" href="https://enterimc.com" target="_blank">立即聯繫 Enter IMC 顧問</a>
+  </div>
+  <div class="rp-disclaimer">
+    ※ 本計畫書依據品牌公開資訊及 AI 分析結果動態生成，關鍵字矩陣與 PAA 問題庫為初稿，將依 GSC 資料與競品分析於正式合約後精煉。<br>
+    ※ 本計畫書有效期限：自發送日起 30 天，歡迎安排線上說明會進一步討論。實際執行細節將在正式合約中確認。<br>
+    ※ 報告由 Enter IMC GEO Strategy Generator 自動生成 · ${today}
+  </div>`;
+
+  $('reportWrap').innerHTML = html;
+  $('reportWrap').scrollIntoView({behavior:'smooth', block:'start'});
+}
+</script>
+</body>
+</html>
